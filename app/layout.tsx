@@ -1,8 +1,11 @@
+'use client'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Instrument_Sans } from 'next/font/google'
+import { cn } from '@/lib/utils'
+import { UserDetailsProvider } from '@/hooks/useUserData'
 
-const inter = Inter({ subsets: ['latin'] })
+const instrument_sans = Instrument_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(instrument_sans.className, "bg-background")}>
+        
+        <UserDetailsProvider>
+        {children}
+        </UserDetailsProvider>
+        </body>
     </html>
   )
 }
